@@ -134,11 +134,11 @@ const jimnyData = {
         title: "3 DOOR SINGLE TONE",
         price: "486.200.000 IDR",
         colors: [
-            {name:"Metallic Silky Silver", file:"3d_metalic_silky_silver.webp", color:"#828992"},
-            {name:"Pearl Bluish Black", file:"3d_pearl_bluish_black.webp", color:"#000000"},
-            {name:"Medium Gray", file:"3d_medium_gray.webp", color:"#555"},
-            {name:"Pearl Pure White", file:"3d_pearl_pure_white.webp", color:"#f5f5f5"},
-            {name:"Jungle Green", file:"3d_jungle_green.webp", color:"#0b520b"}
+            {name:"Metallic Silky Silver", file:"3d_metalic_silky_silver.png", color:"#828992"},
+            {name:"Pearl Bluish Black", file:"3d_pearl_bluish_black.png", color:"#000000"},
+            {name:"Medium Gray", file:"3d_medium_gray.png", color:"#555"},
+            {name:"Pearl Pure White", file:"3d_pearl_pure_white.png", color:"#f5f5f5"},
+            {name:"Jungle Green", file:"3d_jungle_green.png", color:"#0b520b"}
         ]
     },
 
@@ -146,9 +146,9 @@ const jimnyData = {
         title: "3 DOOR TWO TONE",
         price: "499.900.000 IDR",
         colors: [
-            {name:"Metallic Chiffon Ivory + Pearl Bluish Black", file:"3d_2t_chiffon_ivory.webp", color:"#cebd9c"},
-            {name:"Metallic Brisk Blue + Pearl Bluish Black", file:"3d_2t_brisk_blue.webp", color:"#2638db"},
-            {name:"Kinetic Yellow + Pearl Bluish Black", file:"3d_2t_kinetic_yellow.webp", color:"#f0ec17"}
+            {name:"Metallic Chiffon Ivory + Pearl Bluish Black", file:"3d_2t_chiffon_ivory.png", color:"#cebd9c"},
+            {name:"Metallic Brisk Blue + Pearl Bluish Black", file:"3d_2t_brisk_blue.png", color:"#2638db"},
+            {name:"Kinetic Yellow + Pearl Bluish Black", file:"3d_2t_kinetic_yellow.png", color:"#f0ec17"}
         ]
     },
 
@@ -156,9 +156,9 @@ const jimnyData = {
         title: "5 DOOR SINGLE TONE",
         price: "505.600.000 IDR",
         colors: [
-            {name:"Granite Gray Metallic", file:"5d_granite_gray_metallic.webp", color:"#666"},
-            {name:"Jungle Green", file:"5d_jungle_green.webp", color:"#2d3b2f"},
-            {name:"Pearl Bluish Black", file:"5d_pearl_bluish_black.webp", color:"#000000"}
+            {name:"Granite Gray Metallic", file:"5d_granite_gray_metallic.png", color:"#666"},
+            {name:"Jungle Green", file:"5d_jungle_green.png", color:"#2d3b2f"},
+            {name:"Pearl Bluish Black", file:"5d_pearl_bluish_black.png", color:"#000000"}
         ]
     },
 
@@ -166,9 +166,9 @@ const jimnyData = {
         title: "5 DOOR TWO TONE",
         price: "508.600.000 IDR",
         colors: [
-            {name:"Metallic Sizzling Red + Pearl Bluish Black", file:"5d_2t_sizzling_red.webp", color:"#b11226"},
-            {name:"Kinetic Yellow + Pearl Bluish Black", file:"5d_2t_kinetic_yellow.webp", color:"#d4c900"},
-            {name:"Metallic Chiffon Ivory + Pearl Bluish Black", file:"5d_2t_chiffon_ivory.webp", color:"#cebd9c"}
+            {name:"Metallic Sizzling Red + Pearl Bluish Black", file:"5d_2t_sizzling_red.png", color:"#b11226"},
+            {name:"Kinetic Yellow + Pearl Bluish Black", file:"5d_2t_kinetic_yellow.png", color:"#d4c900"},
+            {name:"Metallic Chiffon Ivory + Pearl Bluish Black", file:"5d_2t_chiffon_ivory.png", color:"#cebd9c"}
         ]
     }
 };
@@ -226,4 +226,108 @@ function changeColor(type, file, name) {
         "foto-mobil/Jimny/cards/" + file;
 
     document.getElementById(`color-${type}`).innerText = name;
+}
+
+const xl7Data = {
+  "2t_alpha": {
+    title: "XL7 ALPHA 2 TONE",
+    price: "Rp 337.800.000",
+    colors: [
+      {name:"Savanna Ivory + Black", file:"2t_xl7_alpha_savanna_ivory.webp", color:"#d8c7a3"},
+      {name:"Sunrise Orange + Black", file:"2t_xl7_alpha_sunrise_orange.webp", color:"#e65c2c"},
+      {name:"White + Black", file:"2t_xl7_alpha_white_black.webp", color:"#eee"}
+    ]
+  },
+
+  "2t_kuro": {
+    title: "XL7 ALPHA KURO 2 TONE",
+    price: "Rp 341.800.000",
+    colors: [
+      {name:"Savanna Ivory + Black", file:"2t_xl7_kuro_savanna_ivory.webp", color:"#d8c7a3"},
+      {name:"White + Black", file:"2t_xl7_kuro_white_black.webp", color:"#eee"}
+    ]
+  },
+
+  "st_alpha": {
+    title: "XL7 ALPHA",
+    price: "Rp 335.800.000",
+    colors: [
+      {name:"Cool Black", file:"st_xl7_alpha_cool_black.webp", color:"#111"}
+    ]
+  },
+
+  "st_kuro": {
+    title: "XL7 ALPHA KURO",
+    price: "Rp 339.800.000",
+    colors: [
+      {name:"Cool Black", file:"st_xl7_kuro_cool_black.webp", color:"#111"}
+    ]
+  },
+
+  "beta": {
+    title: "XL7 BETA",
+    price: "Rp 324.600.000",
+    colors: [
+      {name:"Cool Black", file:"xl7_beta_cool_black.webp", color:"#111"},
+      {name:"Magma Gray", file:"xl7_beta_metallic_magma_gray.webp", color:"#555"},
+      {name:"Brave Khaki", file:"xl7_beta_pearl_brave_khaki.webp", color:"#8b7d4b"},
+      {name:"Snow White", file:"xl7_beta_snow_white_pearl.webp", color:"#eee"}
+    ]
+  },
+
+  "zeta": {
+    title: "XL7 ZETA",
+    price: "Rp 295.800.000",
+    colors: [
+      {name:"Cool Black", file:"xl7_zeta_cool_black.webp", color:"#111"},
+      {name:"Magma Gray", file:"xl7_zeta_metallic_magma_gray.webp", color:"#555"},
+      {name:"Brave Khaki", file:"xl7_zeta_pearl_brave_khaki.webp", color:"#8b7d4b"},
+      {name:"Snow White", file:"xl7_zeta_snow_white_pearl.webp", color:"#eee"}
+    ]
+  }
+};
+
+function renderXL7() {
+  const container = document.getElementById("xl7Container");
+  container.innerHTML = "";
+
+  Object.keys(xl7Data).forEach(type => {
+    const car = xl7Data[type];
+
+    const card = document.createElement("div");
+    card.className = "jimny-card";
+
+    card.innerHTML = `
+      <h3>${car.title}</h3>
+      <img id="xl7-${type}-img" src="foto-mobil/XL7/cards/${car.colors[0].file}">
+      
+      <div class="colors">
+        ${car.colors.map(c => `
+          <span 
+            style="background:${c.color}" 
+            onclick="changeXL7Color('${type}','${c.file}','${c.name}')">
+          </span>
+        `).join("")}
+      </div>
+
+      <p id="xl7-${type}-name">${car.colors[0].name}</p>
+      <h4>${car.price}</h4>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function changeXL7Color(type, file, name) {
+  document.getElementById(`xl7-${type}-img`).src = "foto-mobil/XL7/cards/" + file;
+  document.getElementById(`xl7-${type}-name`).innerText = name;
+}
+
+function openXL7Modal() {
+  document.getElementById("xl7Modal").style.display = "flex";
+  renderXL7();
+}
+
+function closeXL7Modal() {
+  document.getElementById("xl7Modal").style.display = "none";
 }

@@ -98,7 +98,9 @@
                 <img src="foto-mobil/xl7-1.webp" alt="range">
                 <div class="range__details">
                     <h4>Suzuki XL7</h4>
-                    <a href="#"><i class="ri-arrow-right-line"></i></a>
+                    <a href="#" onclick="openXL7Modal()">
+                      <i class="ri-arrow-right-line"></i>
+                    </a>
                 </div>
             </div>
             <div class="range__card">
@@ -689,6 +691,16 @@
     <div class="jimny-grid" id="jimny-container"></div>
 
     <button class="btn" onclick="closeJimnyModal()">Tutup</button>
+
+  </div>
+</div>
+
+<div class="modal" id="xl7Modal">
+  <div class="modal-content">
+
+    <div class="jimny-grid" id="xl7Container"></div>
+
+    <button class="btn" onclick="closeXL7Modal()">Tutup</button>
 
   </div>
 </div>
