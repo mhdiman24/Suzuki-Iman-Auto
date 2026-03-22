@@ -411,6 +411,11 @@ nav {
     font-weight: 400;
 }
 
+#select-price {
+    font-size: 2rem; /* for text */
+    line-height: normal;
+}
+
 .select__btns {
     display: flex;
     align-items: center;
