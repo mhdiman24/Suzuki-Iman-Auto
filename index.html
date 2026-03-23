@@ -543,10 +543,10 @@
 <form action="/" class="select__form">
   <div class="select__price">
     <span><i class="fi fi-sr-wallet"></i></span>
-    <div><span id="select-price">287.500.000 - Ertiga GL AT</div>
+    <div><span id="select-price">287.500.000 - Ertiga GL AT</span></div>
   </div>
   <div class="select__btns">
-    <button class="btn">lihat Detail</button>
+    <button type="button" class="btn" onclick="openDetailModal()">Lihat Detail</button>
     <button class="btn">Pesan Sekarang</button>
   </div>
 </form>
@@ -717,7 +717,52 @@
     <button class="btn" onclick="closeFronxModal()">Tutup</button>
   </div>
 </div>
-    
+
+<!--=================================detail modal====================================-->
+<div class="modal" id="detailModal">
+  <div class="modal-content">
+
+    <h3>Simulasi Kredit</h3>
+
+    <!-- Transmission -->
+    <label>Pilih Transmisi</label>
+    <select id="transmission">
+      <option value="">-- Pilih --</option>
+      <option value="AT">Automatic</option>
+      <option value="MT">Manual</option>
+    </select>
+
+    <p id="otrPrice">Harga: -</p>
+
+    <!-- DP -->
+    <label>Down Payment</label>
+    <select id="dp">
+      <option value="">-- Pilih --</option>
+      <option value="0.25">DP 25%</option>
+      <option value="0.30">DP 30%</option>
+      <option value="0.50">DP 50%</option>
+    </select>
+
+    <p id="dpValue">DP: -</p>
+
+    <!-- Tenor -->
+    <label>Tenor</label>
+    <select id="tenor">
+      <option value="">-- Pilih --</option>
+      <option value="12">1 Tahun</option>
+      <option value="24">2 Tahun</option>
+      <option value="36">3 Tahun</option>
+      <option value="48">4 Tahun</option>
+      <option value="60">5 Tahun</option>
+    </select>
+
+    <p id="installment">Cicilan: -</p>
+
+    <button class="btn" onclick="closeDetailModal()">Tutup</button>
+
+  </div>
+</div>
+
     <!--=================================scrollreveal====================================-->
     <script src="https://unpkg.com/scrollreveal"></script>
 

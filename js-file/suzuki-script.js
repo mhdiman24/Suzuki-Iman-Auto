@@ -471,3 +471,126 @@ function openFronxModal() {
 function closeFronxModal() {
   document.getElementById("fronxModal").style.display = "none";
 }
+
+/*------------------------------------simulation----------------------------------*/
+/*---open close modal---*/
+function openDetailModal() {
+  const activeSlide = document.querySelector(".swiper-slide-active");
+  const index = activeSlide.getAttribute("data-swiper-slide-index");
+
+  currentCarIndex = parseInt(index);
+
+  // ✅ RESET EVERYTHING
+  selectedPrice = 0;
+  dpAmount = 0;
+
+  transmissionEl.value = "";
+  dpEl.value = "";
+  tenorEl.value = "";
+
+  otrPriceEl.innerText = "Harga: -";
+  dpValueEl.innerText = "DP: -";
+  installmentEl.innerText = "Cicilan: -";
+
+  document.getElementById("detailModal").style.display = "flex";
+}
+
+function closeDetailModal() {
+  document.getElementById("detailModal").style.display = "none";
+}
+
+/*---OTR---*/
+const carData = [
+  { name: "Ertiga GL AT", AT: 287500000, MT: 276500000 },
+  { name: "Ertiga GL MT", AT: 287500000, MT: 276500000 },
+  { name: "XL7 Alpha Kuro", AT: 339800000, MT: null },
+  { name: "XL7 Alpha Kuro 2 Tone", AT: 341800000, MT: null },
+  { name: "XL7 Alpha", AT: 335800000, MT: 324300000 },
+  { name: "XL7 Alpha 2 Tone", AT: 337800000, MT: 326300000 },
+  { name: "XL7 Beta", AT: 324600000, MT: 313100000 },
+  { name: "XL7 Zeta", AT: 295800000, MT: 284800000 },
+  { name: "Jimny 5 Door", AT: 505600000, MT: 491800000 },
+  { name: "Jimny 5 Door 2 Tone", AT: 508600000, MT: 494800000 },
+  { name: "Jimny 3 Door", AT: 486200000, MT: 483200000 },
+  { name: "Jimny 3 Door 2 Tone", AT: 499900000, MT: 496900000 },
+  { name: "Fronx SGX 2 Tone", AT: 337100000, MT: null },
+  { name: "Fronx SGX", AT: 335100000, MT: null },
+  { name: "Fronx GX", AT: 309200000, MT: 291000000 },
+  { name: "Fronx GL", AT: 279600000, MT: 268700000 }
+];
+
+let currentCarIndex = 0;
+
+/*---Get Elements---*/
+const transmissionEl = document.getElementById("transmission");
+const dpEl = document.getElementById("dp");
+const tenorEl = document.getElementById("tenor");
+
+const otrPriceEl = document.getElementById("otrPrice");
+const dpValueEl = document.getElementById("dpValue");
+const installmentEl = document.getElementById("installment");
+
+/*---Update OTR Price (when transmission changes)---*/
+let selectedPrice = 0;
+
+transmissionEl.addEventListener("change", () => {
+  const type = transmissionEl.value;
+  const car = carData[currentCarIndex];
+
+  dpEl.value = "";
+  tenorEl.value = "";
+
+  dpValueEl.innerText = "DP: -";
+  installmentEl.innerText = "Cicilan: -";
+
+  dpAmount = 0;
+
+  if (car && car[type] !== null && car[type] !== undefined) {
+    selectedPrice = car[type];
+    otrPriceEl.innerText =
+      "Harga: Rp " + selectedPrice.toLocaleString("id-ID");
+  } else {
+    otrPriceEl.innerText = "Tipe tidak tersedia";
+    selectedPrice = 0;
+  }
+});
+
+/*---Calculate DP---*/
+let dpAmount = 0;
+
+dpEl.addEventListener("change", () => {
+  const dpPercent = parseFloat(dpEl.value);
+
+  // ✅ RESET TENOR ONLY
+  tenorEl.value = "";
+  installmentEl.innerText = "Cicilan: -";
+
+  if (selectedPrice && dpPercent) {
+    dpAmount = selectedPrice * dpPercent;
+    dpValueEl.innerText = "DP: Rp " + dpAmount.toLocaleString("id-ID");
+  } else {
+    dpAmount = 0;
+    dpValueEl.innerText = "DP: -";
+  }
+});
+
+/*---Calculate Monthly Installment---*/
+tenorEl.addEventListener("change", () => {
+  const months = parseInt(tenorEl.value);
+
+  if (selectedPrice && dpAmount && months) {
+    const loan = selectedPrice - dpAmount;
+
+    const annualRate = 0.10;
+    const monthlyRate = annualRate / 12;
+
+    const installment =
+      (loan * monthlyRate) /
+      (1 - Math.pow(1 + monthlyRate, -months));
+
+    installmentEl.innerText =
+      "Cicilan: Rp " +
+      Math.round(installment).toLocaleString("id-ID") +
+      " / bulan";
+  }
+});
