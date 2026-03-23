@@ -584,6 +584,15 @@ footer {
     width: 100%;
 }
 
+.jimny-card h3,
+.jimny-card h4,
+.jimny-card p {
+    color: #fff;
+    text-shadow: 
+        0 2px 10px rgba(0,0,0,0.5),
+        0 4px 20px rgba(0,0,0,0.4);
+}
+
 .colors span {
     width: 18px;
     height: 18px;
