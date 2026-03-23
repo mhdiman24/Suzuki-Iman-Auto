@@ -107,14 +107,18 @@
                 <img src="foto-mobil/ertiga1.webp" alt="range">
                 <div class="range__details">
                     <h4>Suzuki Ertiga</h4>
-                    <a href="#"><i class="ri-arrow-right-line"></i></a>
+                    <a href="#" onclick="openErtigaModal()">
+                      <i class="ri-arrow-right-line"></i>
+                    </a>
                 </div>
             </div>
             <div class="range__card">
                 <img src="foto-mobil/fronx1.png" alt="range">
                 <div class="range__details">
                     <h4>Suzuki Fronx</h4>
-                    <a href="#"><i class="ri-arrow-right-line"></i></a>
+                    <a href="#" onclick="openFronxModal()">
+                      <i class="ri-arrow-right-line"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -685,23 +689,32 @@
   </div>
 </footer>
 
+<!--=================================modal====================================-->
 <div class="modal" id="jimny-modal">
   <div class="modal-content">
-
     <div class="jimny-grid" id="jimny-container"></div>
-
     <button class="btn" onclick="closeJimnyModal()">Tutup</button>
-
   </div>
 </div>
 
 <div class="modal" id="xl7Modal">
   <div class="modal-content">
-
     <div class="jimny-grid" id="xl7Container"></div>
-
     <button class="btn" onclick="closeXL7Modal()">Tutup</button>
+  </div>
+</div>
 
+<div class="modal" id="ertigaModal">
+  <div class="modal-content">
+    <div class="jimny-grid" id="ertigaContainer"></div>
+    <button class="btn" onclick="closeErtigaModal()">Tutup</button>
+  </div>
+</div>
+
+<div class="modal" id="fronxModal">
+  <div class="modal-content">
+    <div class="jimny-grid" id="fronxContainer"></div>
+    <button class="btn" onclick="closeFronxModal()">Tutup</button>
   </div>
 </div>
     

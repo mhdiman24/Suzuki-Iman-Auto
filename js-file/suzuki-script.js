@@ -129,6 +129,7 @@ bannerContent.forEach(item => {
     banner.appendChild(duplicateNode);
 });
 
+/*------------------------------------Jimny----------------------------------*/
 const jimnyData = {
     "3d": {
         title: "3 DOOR SINGLE TONE",
@@ -228,6 +229,7 @@ function changeColor(type, file, name) {
     document.getElementById(`color-${type}`).innerText = name;
 }
 
+/*------------------------------------XL7----------------------------------*/
 const xl7Data = {
   "2t_alpha": {
     title: "XL7 ALPHA 2 TONE",
@@ -312,6 +314,7 @@ function renderXL7() {
 
       <p id="xl7-${type}-name">${car.colors[0].name}</p>
       <h4>${car.price}</h4>
+      <small>OTR Sumatera Utara</small>
     `;
 
     container.appendChild(card);
@@ -330,4 +333,141 @@ function openXL7Modal() {
 
 function closeXL7Modal() {
   document.getElementById("xl7Modal").style.display = "none";
+}
+
+/*------------------------------------Ertiga----------------------------------*/
+const ertigaData = {
+  title: "ERTIGA GL",
+  price: "Rp 287.500.000",
+  colors: [
+    {name:"Burgundy Red", file:"ertiga_gl_burgundy_red.webp", color:"#6d1f2b"},
+    {name:"Cool Black", file:"ertiga_gl_cool_black.webp", color:"#111"},
+    {name:"Mellow Deep Red", file:"ertiga_gl_mellow_deep_red.webp", color:"#8b2c2c"},
+    {name:"Metallic Magma Gray", file:"ertiga_gl_metallic_magma_gray.webp", color:"#555"},
+    {name:"Metallic Silky Silver", file:"ertiga_gl_metallic_silky_silver.webp", color:"#c0c0c0"},
+    {name:"Pearl Brave Khaki", file:"ertiga_gl_pearl_brave_khaki.webp", color:"#8b7d4b"},
+    {name:"Snow White Pearl", file:"ertiga_gl_snow_white_pearl.webp", color:"#eee"}
+  ]
+};
+
+function renderErtiga() {
+  const container = document.getElementById("ertigaContainer");
+
+  container.innerHTML = `
+    <div class="jimny-card">
+      <h3>${ertigaData.title}</h3>
+      
+      <img id="ertiga-img" src="foto-mobil/Ertiga/cards/${ertigaData.colors[0].file}">
+      
+      <div class="colors">
+        ${ertigaData.colors.map(c => `
+          <span 
+            style="background:${c.color}" 
+            onclick="changeErtigaColor('${c.file}','${c.name}')">
+          </span>
+        `).join("")}
+      </div>
+
+      <p id="ertiga-name">${ertigaData.colors[0].name}</p>
+      <h4>${ertigaData.price}</h4>
+      <small>OTR Sumatera Utara</small>
+    </div>
+  `;
+}
+
+function changeErtigaColor(file, name) {
+  document.getElementById("ertiga-img").src = "foto-mobil/Ertiga/cards/" + file;
+  document.getElementById("ertiga-name").innerText = name;
+}
+
+function openErtigaModal() {
+  document.getElementById("ertigaModal").style.display = "flex";
+  renderErtiga();
+}
+
+function closeErtigaModal() {
+  document.getElementById("ertigaModal").style.display = "none";
+}
+
+/*------------------------------------Fronx----------------------------------*/
+const fronxData = [
+  {
+    title: "FRONX SGX 2 TONE",
+    price: "Rp 337.100.000",
+    colors: [
+      {name:"Ice Grayish Blue + Black", file:"2t_fronx_sgx_ice_grayish_blue-black.webp", color:"#6b7a8f"},
+      {name:"Pearl Snow White + Black", file:"2t_fronx_sgx_pearl_snow_white-black.webp", color:"#eee"},
+      {name:"Savana Ivory + Black", file:"2t_fronx_sgx_savana_ivory-black.webp", color:"#d8c8a5"}
+    ]
+  },
+  {
+    title: "FRONX SGX",
+    price: "Rp 335.100.000",
+    colors: [
+      {name:"Cool Black", file:"st_fronx_sgx_cool_black.webp", color:"#111"},
+      {name:"Snow White Pearl", file:"st_fronx_sgx_snow_white_pearl.webp", color:"#eee"},
+      {name:"Savana Ivory", file:"st_fronx_sgx_savana_ivory.webp", color:"#d8c8a5"}
+    ]
+  },
+  {
+    title: "FRONX GX",
+    price: "Rp 309.200.000",
+    colors: [
+      {name:"Cool Black", file:"fronx_gx_cool_black.webp", color:"#111"},
+      {name:"Pearl Snow White", file:"fronx_gx_pearl_snow_white.webp", color:"#eee"},
+      {name:"Savana Ivory", file:"fronx_gx_savana_ivory.webp", color:"#d8c8a5"},
+      {name:"Magma Gray", file:"fronx_gx_magma_gray.webp", color:"#555"}
+    ]
+  },
+  {
+    title: "FRONX GL",
+    price: "Rp 279.600.000",
+    colors: [
+      {name:"Cool Black", file:"fronx_gl_cool_black.webp", color:"#111"},
+      {name:"Pearl Snow White", file:"fronx_gl_pearl_snow_white.webp", color:"#eee"},
+      {name:"Magma Gray", file:"fronx_gl_magma_gray.webp", color:"#555"}
+    ]
+  }
+];
+
+function renderFronx() {
+  const container = document.getElementById("fronxContainer");
+
+  container.innerHTML = fronxData.map((car, i) => `
+    <div class="jimny-card">
+      <h3>${car.title}</h3>
+
+      <img id="fronx-img-${i}" 
+           src="foto-mobil/fronx/cards/${car.colors[0].file}">
+
+      <div class="colors">
+        ${car.colors.map(c => `
+          <span 
+            style="background:${c.color}" 
+            onclick="changeFronxColor(${i}, '${c.file}', '${c.name}')">
+          </span>
+        `).join("")}
+      </div>
+
+      <p id="fronx-name-${i}">${car.colors[0].name}</p>
+      <h4>${car.price}</h4>
+      <small>OTR Sumatera Utara</small>
+    </div>
+  `).join("");
+}
+
+function changeFronxColor(index, file, name) {
+  document.getElementById(`fronx-img-${index}`).src =
+    "foto-mobil/fronx/cards/" + file;
+
+  document.getElementById(`fronx-name-${index}`).innerText = name;
+}
+
+function openFronxModal() {
+  document.getElementById("fronxModal").style.display = "flex";
+  renderFronx();
+}
+
+function closeFronxModal() {
+  document.getElementById("fronxModal").style.display = "none";
 }
