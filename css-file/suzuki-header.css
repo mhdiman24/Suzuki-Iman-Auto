@@ -299,6 +299,22 @@ nav {
     max-width: 900px;
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  backdrop-filter: blur(6px);
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .select__card img {
     max-width: 800px;
     margin-inline: auto;
@@ -731,4 +747,18 @@ footer {
     .story__grid {
         padding: 1.5rem;
     }
+}
+
+@media (max-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 30px;
+    height: 30px;
+    opacity: 0.7; /* softer, less intrusive */
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 12px;
+  }
 }

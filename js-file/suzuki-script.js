@@ -104,6 +104,11 @@ const swiper = new Swiper(".swiper", {
         stretch: -100,
     },
 
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+
     on: {
         slideChange: function () {
             const index = this.realIndex;
