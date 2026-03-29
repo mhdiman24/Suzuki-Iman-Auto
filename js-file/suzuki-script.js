@@ -586,7 +586,7 @@ tenorEl.addEventListener("change", () => {
   if (selectedPrice && dpAmount && months) {
     const loan = selectedPrice - dpAmount;
 
-    const annualRate = 0.10;
+    const annualRate = 0.12; 
     const monthlyRate = annualRate / 12;
 
     const installment =
@@ -599,3 +599,152 @@ tenorEl.addEventListener("change", () => {
       " / bulan";
   }
 });
+
+/*------------------------------------order----------------------------------*/
+function openOrderModal() {
+  document.getElementById("orderModal").style.display = "flex";
+
+  populateCarOptions();
+
+  // auto select current swiper car
+  const currentCar = carData[currentCarIndex];
+  document.getElementById("carSelect").value = currentCar.name;
+
+  updateOrderPrice();
+}
+
+function closeOrderModal() {
+  document.getElementById("orderModal").style.display = "none";
+
+  // reset inputs
+  document.getElementById("custName").value = "";
+  document.getElementById("custAddress").value = "";
+  document.getElementById("carSelect").selectedIndex = 0;
+  document.getElementById("paymentType").selectedIndex = 0;
+  document.getElementById("orderDP").selectedIndex = 0;
+  document.getElementById("orderTenor").selectedIndex = 0;
+
+  // reset calculated values
+  document.getElementById("orderPrice").innerText = "Harga: -";
+  document.getElementById("orderDPValue").innerText = "DP: -";
+  document.getElementById("orderInstallment").innerText = "Cicilan: -";
+
+  // reset variables
+  orderPrice = 0;
+  orderDPAmount = 0;
+}
+
+/*---Populate Dropdown---*/
+function populateCarOptions() {
+  const select = document.getElementById("carSelect");
+  select.innerHTML = "";
+
+  carData.forEach(car => {
+    const option = document.createElement("option");
+    option.value = car.name;
+    option.textContent = car.name;
+    select.appendChild(option);
+  });
+}
+
+/*---Harga---*/
+let orderPrice = 0;
+
+function updateOrderPrice() {
+  const selectedName = document.getElementById("carSelect").value;
+  const car = carData.find(c => c.name === selectedName);
+
+  if (!car) return;
+
+  orderPrice = car.AT || car.MT;
+
+  document.getElementById("orderPrice").innerText =
+    "Harga: Rp " + orderPrice.toLocaleString("id-ID");
+}
+
+document.getElementById("carSelect").addEventListener("change", () => {
+
+  // update price first
+  updateOrderPrice();
+
+  // ✅ RESET DP & TENOR 
+  orderDPAmount = 0;
+
+  document.getElementById("orderDP").value = "";
+  document.getElementById("orderTenor").value = "";
+
+  document.getElementById("orderDPValue").innerText = "DP: -";
+  document.getElementById("orderInstallment").innerText = "Cicilan: -";
+});
+
+/*---Payment Toogle---*/
+const paymentEl = document.getElementById("paymentType");
+const creditFields = document.getElementById("creditFields");
+
+paymentEl.addEventListener("change", () => {
+  if (paymentEl.value === "cash") {
+    creditFields.style.display = "none";
+  } else {
+    creditFields.style.display = "block";
+  }
+});
+
+/*---DP---*/
+let orderDPAmount = 0;
+
+document.getElementById("orderDP").addEventListener("change", () => {
+  const percent = parseFloat(document.getElementById("orderDP").value);
+
+  if (orderPrice && percent) {
+    orderDPAmount = orderPrice * percent;
+
+    document.getElementById("orderDPValue").innerText =
+      "DP: Rp " + orderDPAmount.toLocaleString("id-ID");
+  }
+  // ✅ RESET TENOR
+  document.getElementById("orderTenor").value = "";
+  document.getElementById("orderInstallment").innerText = "Cicilan: -";
+});
+
+/*---Installment---*/
+document.getElementById("orderTenor").addEventListener("change", () => {
+  const months = parseInt(document.getElementById("orderTenor").value);
+
+  if (orderPrice && orderDPAmount && months) {
+    const loan = orderPrice - orderDPAmount;
+    const rate = 0.12 / 12;
+
+    const installment =
+      (loan * rate) / (1 - Math.pow(1 + rate, -months));
+
+    document.getElementById("orderInstallment").innerText =
+      "Cicilan: Rp " +
+      Math.round(installment).toLocaleString("id-ID") +
+      "/bulan";
+  }
+});
+
+/*---Whatsapp---*/
+function sendWhatsApp() {
+  const name = document.getElementById("custName").value;
+  const address = document.getElementById("custAddress").value;
+  const car = document.getElementById("carSelect").value;
+  const payment = document.getElementById("paymentType").value;
+
+  let message = `Halo, saya ingin membeli mobil\n\n`;
+  message += `Nama: ${name}\n`;
+  message += `Alamat: ${address}\n`;
+  message += `Mobil: ${car}\n`;
+  message += `Harga: Rp ${orderPrice.toLocaleString("id-ID")}\n`;
+  message += `Pembayaran: ${payment}\n`;
+
+  if (payment === "credit") {
+    message += document.getElementById("orderDPValue").innerText + "\n";
+    message += document.getElementById("orderInstallment").innerText + "\n";
+  }
+
+  const phone = "6281264646065"; 
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+  window.open(url, "_blank");
+}

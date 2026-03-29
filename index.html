@@ -524,7 +524,7 @@
   </div>
   <div class="select__btns">
     <button type="button" class="btn" onclick="openDetailModal()">Lihat Detail</button>
-    <button class="btn">Pesan Sekarang</button>
+    <button type="button" class="btn" onclick="openOrderModal()">Pesan Sekarang</button>
   </div>
 </form>
 </section>
@@ -736,6 +736,61 @@
     <p id="installment">Cicilan: -</p>
 
     <button class="btn" onclick="closeDetailModal()">Tutup</button>
+
+  </div>
+</div>
+
+<!--=================================order modal====================================-->
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+
+    <h3>Form Pemesanan</h3>
+
+    <div class="form-group">
+      <input type="text" id="custName" placeholder="Nama Anda">
+      <textarea id="custAddress" placeholder="Alamat"></textarea>
+    </div>
+
+    <div class="form-group">
+      <select id="carSelect"></select>
+    </div>
+
+    <div class="form-group">
+      <p id="orderPrice">Harga: -</p>
+    </div>
+
+    <div class="form-group">
+      <select id="paymentType">
+        <option value="">Pilih Pembayaran</option>
+        <option value="cash">Cash</option>
+        <option value="credit">Kredit</option>
+      </select>
+    </div>
+
+    <div id="creditFields" class="form-group">
+      <select id="orderDP">
+        <option value="">Pilih DP</option>
+        <option value="0.25">DP 25%</option>
+        <option value="0.3">DP 30%</option>
+        <option value="0.5">DP 50%</option>
+      </select>
+
+      <p id="orderDPValue">DP: -</p>
+
+      <select id="orderTenor">
+        <option value="">Pilih Tenor</option>
+        <option value="12">1 Tahun</option>
+        <option value="24">2 Tahun</option>
+        <option value="36">3 Tahun</option>
+        <option value="48">4 Tahun</option>
+        <option value="60">5 Tahun</option>
+      </select>
+
+      <p id="orderInstallment">Cicilan: -</p>
+    </div>
+
+    <button class="btn" onclick="sendWhatsApp()">Kirim Pesan</button>
+    <button class="btn" onclick="closeOrderModal()">Tutup</button>
 
   </div>
 </div>

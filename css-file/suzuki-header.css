@@ -642,6 +642,53 @@ footer {
     justify-items: center;
 }
 
+/* order modal */
+#orderModal .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* group spacing */
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* inputs full width */
+#orderModal input,
+#orderModal textarea,
+#orderModal select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+#orderPrice,
+#orderDPValue,
+#orderInstallment {
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+  text-shadow: 
+    0 2px 5px rgba(0,0,0,1),
+    0 0 8px rgba(0,0,0,0.8);
+}
+
+#orderModal .btn {
+  width: 150px;
+  text-align: center;
+}
+
+#orderModal .modal-content button {
+  margin-top: 10px;
+}
+
 @keyframes scroll {
     to{
         transform: translateX(calc(-50% - 4rem));
